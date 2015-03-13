@@ -1,6 +1,7 @@
 SmS.Router.map(function () {
-  this.resource('responses');
-  this.resource('response', { path: '/responses/:response_id'});
+  this.route('response', {path: '/responses/:response_id'})
+  this.route('responses');
+  // this.resource('response', { path: '/responses/:response_id'});
 	// this.resource('todos', function () {
 	// 	this.route('new');
 	// 	this.route('edit', {

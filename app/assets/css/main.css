@@ -2,6 +2,10 @@ body {
 	margin-top: 70px;
 }
 
+a {
+  color:white;
+}
+
 .done {
 	background: #FF9999;
 	text-decoration: line-through;
