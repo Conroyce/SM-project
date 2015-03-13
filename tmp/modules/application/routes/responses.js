@@ -2,7 +2,7 @@ SmS.ResponsesRoute = Ember.Route.extend({
   model:function() {
     return surveys;
   }
-});
+})
 
 var surveys = [{
   id:1,
