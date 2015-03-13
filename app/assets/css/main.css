@@ -1,9 +1,37 @@
 body {
-	margin-top: 70px;
+  background-color:#EAEAE8;
 }
 
 a {
   color:white;
+}
+
+.response-wrapper {
+  width:90%;
+  margin: 0px auto;
+  margin-bottom:40px;
+  background-color:white;
+  box-sizing:border-box;
+  padding:20px;
+  border:2px solid #CFCEBF;
+  border-radius:3px;
+}
+
+.bot-pad {
+  background-color:#898B7A;
+}
+
+.response-wrapper p {
+  color:#898B7A;
+}
+
+.response-wrapper h3 {
+  color:#5B594A;
+}
+
+p.question {
+  color:#000;
+  font-weight:700;
 }
 
 .done {
@@ -11,16 +39,18 @@ a {
 	text-decoration: line-through;
 }
 
-.todos {
-	list-style: none;
+.nav-back {
+  background-color: #5B5A4B;
+  width:100%;
 }
 
-.todos input {
-	margin-bottom: 0px;
+.sub-title {
+  vertical-align: middle;
+  height:100%;
+  color:white;
+  font-size:2em;
 }
 
-.todos li {
-	border: 1px solid #EEE;
-	border-radius: 3px;
-	padding: 0px 5px;
+.space-top-3 {
+  margin-top:30px;
 }

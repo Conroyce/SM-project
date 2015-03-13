@@ -30,5 +30,16 @@ module.exports = function(app) {
     var id = parseInt(req.params.responses_id)
     res.json(surveys[id-1])
   })
+
+  app.use('/', express.static(__dirname + '/dist'));
+
+  // app.get("/", function(req,res) {
+  //   res.redirect("/app/");
+  // });
+
+  app.get("/data", function(req,res) {
+    res.json(surveys);
+  })
 	// app.use('/', express.static(__dirname + '/dist'));
+  // app.use('/app', express.static(__dirname + '/dist'));
 };

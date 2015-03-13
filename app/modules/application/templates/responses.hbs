@@ -1,8 +1,18 @@
-<h1>Hey from responses</h1>
-
-{{#each}}
-  <p>Date: {{date}}</p>
-  <p>{{question}}</p>
-  <p>{{answer}}</p>
-  <p class="btn btn-primary">{{#link-to 'response' this}}View{{/link-to}}</p>
-{{/each}}
+<div>
+  {{#each}}
+    <div class="row response-wrapper">
+      <div class="row">
+        <div class="col-xs-12">
+          <h3>{{name}} <span class="date">{{date}}</span></h3>
+          <p class="question">{{question}}</p>
+          <p>{{answer}}</p>
+        </div>
+      </div>
+      <div class="row bot-pad">
+        <div class="col-xs-12">
+          <p class="btn btn-primary">{{#link-to 'response' this}}View{{/link-to}}</p>
+        </div>
+      </div>
+    </div>  
+  {{/each}}
+</div>  
