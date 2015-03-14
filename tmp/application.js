@@ -88,7 +88,7 @@ SmS.ResponseRoute = Ember.Route.extend({
   model: function(params) {
     var par = parseInt(params.response_id);
     return Ember.$.getJSON('/responses/'+par+'.json').then(function(data) {
-      return data;
+      return {data: data};
     });
   }
 });
@@ -100,7 +100,6 @@ SmS.ResponseRoute = Ember.Route.extend({
 SmS.ResponsesRoute = Ember.Route.extend({
   model:function() {
     return Ember.$.getJSON('/responses.json').then(function(data) {
-      console.log(data);
       return data;
     });
   }
