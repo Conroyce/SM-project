@@ -1,16 +1,25 @@
-<div>
+<div class="abs">
   {{#each}}
     <div class="row response-wrapper">
-      <div class="row">
-        <div class="col-xs-12">
-          <h3>{{name}} <span class="date">{{date}}</span></h3>
-          <p class="question">{{question}}</p>
-          <p>{{answer}}</p>
-        </div>
-      </div>
+      <div class="top-pad">
+        <div class="row">
+          <div class="col-xs-10">
+            <h3>{{name}} <span class="date">{{date}}</span></h3>
+            <p class="question">{{question}}</p>
+          </div>
+          <div class="col-xs-2">
+            <p class="num">{{num}}</p>
+          </div> 
+        </div> 
+        <div class="row">
+          <div class="col-xs-12">
+            <p>{{answer}}</p>
+          </div>
+        </div> 
+      </div>  
       <div class="row bot-pad">
-        <div class="col-xs-12">
-          <p class="btn btn-primary">{{#link-to 'response' this}}View{{/link-to}}</p>
+        <div class="col-xs-2">
+          <p class="btn btn-primary form-control">{{#link-to 'response' this}}View{{/link-to}}</p>
         </div>
       </div>
     </div>  
