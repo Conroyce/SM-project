@@ -34,6 +34,12 @@ a {
   width:150px;
 }
 
+.bot-pad-show {
+  margin:0;
+  height:80px;
+  background-color:#dededb;
+}
+
 .response-wrapper p {
   color:#898B7A;
 }
@@ -45,6 +51,7 @@ a {
 }
 
 p.question {
+  margin-top:20px;
   color:#5B594A;
   font-weight:700;
 }
@@ -91,4 +98,8 @@ p.question {
 
 .space-top-3 {
   margin-top:30px;
+}
+
+.space-bot-1 {
+  margin-bottom:10px;
 }
