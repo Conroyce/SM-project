@@ -314,8 +314,8 @@ SmS.ApplicationSerializer = DS.RESTSerializer.extend({
 (function() {
 
 SmS.Router.map(function () {
-  this.route('response', {path: '/responses/:response_id'})
-  this.route('responses');
+  this.route('response', {path: 'responses/:response_id'})
+  this.route('responses', {path: '/responses'});
 });
 
 })();

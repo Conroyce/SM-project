@@ -1,10 +1,15 @@
 var NODE_ENV = process.env.NODE_ENV,
 	express = require('express'),
-	server = express();
+	server = express(),
+  multer = require('multer'),
+  bodyParser = require('body-parser')
 
 server.configure(function() {
 	server.use(express.json());
 	server.use(express.urlencoded());
+  server.use(bodyParser.json());
+  server.use(bodyParser.urlencoded({ extended:true }));
+  server.use(multer());
 });
 
 require('./app')(server);
