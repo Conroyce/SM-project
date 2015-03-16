@@ -16,42 +16,7 @@ Ember.Application.initializer({
 		// Basic idea of an initializer
 		// Do things like setup injections here
 		
-		// Force the menu to collapse on navigation
-		$('body').on('click', '.navbar-collapse li', function () {
-			$('.navbar-collapse').collapse('hide');
-		});
-		
 	}
-});
-
-
-})();
-
-(function() {
-
-SmS.TodoModalMixin = Ember.Mixin.create({
-	closeModal: function (modal) {
-		var controller = this;
-		
-		modal.$().on('hidden.bs.modal', function () {
-			controller.transitionToRoute('todos.index');
-		});
-		modal.$().modal('hide');
-		
-	}
-});
-
-
-})();
-
-(function() {
-
-SmS.TodoItemComponent = Ember.Component.extend({
-
-	tagName: 'li',
-	classNames: ['list-group-item'],
-
-	classNameBindings: ['todo.done']
 });
 
 
@@ -66,21 +31,6 @@ SmS.Response = DS.Model.extend({
   question: DS.attr('string'),
   answer: DS.attr('string')
 });
-
-})();
-
-(function() {
-
-SmS.Todo = DS.Model.extend({
-	title: DS.attr('string'),
-	done: DS.attr('boolean'),
-
-	// Update the database immediately upon checking done
-	doneDidChange: function () {
-		if (this.get('isDirty')) this.save();
-	}.observes('done')
-});
-
 
 })();
 
@@ -119,129 +69,8 @@ SmS.ResponsesRoute = Ember.Route.extend({
 
 (function() {
 
-SmS.TodosNewRoute = Ember.Route.extend({
-	model: function () {
-		return this.store.createRecord('todo');
-	},
-	actions: {
-		error: function () {
-			console.log('error', arguments);
-		}
-	}
-});
-
-
-})();
-
-(function() {
-
-SmS.TodosRoute = Ember.Route.extend({
-	model: function () {
-		return this.store.find('todo');
-	}
-});
-
-
-})();
-
-(function() {
-
-SmS.TodosEditController = Ember.ObjectController.extend(SmS.TodoModalMixin, {
-	actions: {
-		save: function (modal) {
-			var controller = this,
-				person = this.get('model');
-
-			person.save().then(function () {
-				controller.closeModal(modal);
-			});
-		},
-
-		cancel: function (modal) {
-			var person = this.get('model');
-
-			person.rollback();
-
-			this.closeModal(modal);
-		}
-	}
-});
-
-
-})();
-
-(function() {
-
-SmS.TodosNewController = Ember.ObjectController.extend(SmS.TodoModalMixin, {
-	actions: {
-		save: function (modal) {
-			var controller = this,
-				person = this.get('model');
-
-			person.save().then(function () {
-				controller.closeModal(modal);
-			});
-		},
-
-		cancel: function (modal) {
-			var person = this.get('model');
-
-			person.deleteRecord();
-
-			this.closeModal(modal);
-		}
-	}
-});
-
-
-
-})();
-
-(function() {
-
-SmS.TodosController = Ember.ArrayController.extend({
-	actions: {
-		removeDone: function () {
-			var doneTodos = this.filterBy('done');
-			doneTodos.invoke('deleteRecord');
-			doneTodos.invoke('save');
-		}
-	}
-});
-
-
-})();
-
-(function() {
-
 SmS.ApplicationView = Ember.View.extend({
 
-});
-
-
-})();
-
-(function() {
-
-SmS.TodosEditView = Ember.View.extend({
-
-	classNames: ['modal', 'fade'],
-
-	didInsertElement: function () {
-		this.$().modal({
-			show: true
-		});
-	}
-
-});
-
-
-})();
-
-(function() {
-
-SmS.TodosNewView = SmS.TodosEditView.extend({
-	templateName: 'todos/edit',
 });
 
 
