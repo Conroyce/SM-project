@@ -5,17 +5,17 @@ var express = require('express'),
 	surveys = require('./surveys.json');
 
 module.exports = function (server) {
-	server.use(orm.express('sqlite://./test.db', {
-		define: function (db, models, next) {
-			// Load your models here
+	// server.use(orm.express('sqlite://./test.db', {
+	// 	define: function (db, models, next) {
+	// 		// Load your models here
 
-			db.settings.set('instance.returnAllErrors', true);
+	// 		db.settings.set('instance.returnAllErrors', true);
 
-			db.sync();
+	// 		db.sync();
 
-			next();
-		}
-	}));
+	// 		next();
+	// 	}
+	// }));
 
 	server.get('/api/v1', function (req, res) {
 		res.send('API v1');
