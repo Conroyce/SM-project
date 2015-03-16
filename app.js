@@ -7,7 +7,6 @@ var survey = require('./survey.json');
 module.exports = function(app) {
   app.use('/app', express.static(__dirname + '/dist'));
 
-
   app.get('/responses.json',function(req, res) {
     res.json({ "survey": surveys });
   });
