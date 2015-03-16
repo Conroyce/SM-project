@@ -8,7 +8,7 @@ module.exports = function(app) {
   app.use('/', express.static(__dirname + '/dist'));
  
   app.get('/responses.json',function(req, res) {
-    res.json(surveys);
+    res.json({ "survey": surveys });
   });
 
   app.post('/responses.json',function(req, res) {

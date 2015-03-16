@@ -1,6 +1,8 @@
 var express = require('express'),
 	orm = require('orm'),
-	inflectorController = require('./server/controllers/inflector');
+	inflectorController = require('./server/controllers/inflector'),
+	survey = require('./survey.json'),
+	surveys = require('./surveys.json');
 
 module.exports = function (server) {
 	server.use(orm.express('sqlite://./test.db', {
@@ -25,11 +27,14 @@ module.exports = function (server) {
 	});
 
 	server.get('/api/:modelName', function (req, res) {
-		inflectorController.findMany(req, res);
+		console.log("reached backend", surveys);
+		res.json(surveys)
 	});
 
 	server.get('/api/:modelName/:id', function (req, res) {
-		inflectorController.findOne(req, res);
+		var id = req.params.id-1;
+		console.log("in backend: ", survey[id]);
+		res.json(survey[id])
 	});
 
 	server.put('/api/:modelName/:id', function (req, res) {

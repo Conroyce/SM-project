@@ -59,6 +59,18 @@ SmS.TodoItemComponent = Ember.Component.extend({
 
 (function() {
 
+SmS.Response = DS.Model.extend({
+  name: DS.attr('string'),
+  num: DS.attr('number'),
+  date: DS.attr('string'),
+  question: DS.attr('string'),
+  answer: DS.attr('string')
+});
+
+})();
+
+(function() {
+
 SmS.Todo = DS.Model.extend({
 	title: DS.attr('string'),
 	done: DS.attr('boolean'),
@@ -86,7 +98,7 @@ SmS.IndexRoute = Ember.Route.extend({
 
 SmS.ResponseRoute = Ember.Route.extend({
   model: function(params) {
-    var par = parseInt(params.response_id);
+    var par = params.response_id;
     return Ember.$.getJSON('/responses/'+par+'.json').then(function(data) {
       return {data: data};
     });
@@ -98,12 +110,10 @@ SmS.ResponseRoute = Ember.Route.extend({
 (function() {
 
 SmS.ResponsesRoute = Ember.Route.extend({
-  model:function() {
-    return Ember.$.getJSON('/responses.json').then(function(data) {
-      return data;
-    });
+  model: function() {
+    return this.store.find('response');
   }
-});
+})
 
 })();
 
@@ -290,13 +300,10 @@ SmS.ApplicationSerializer = DS.RESTSerializer.extend({
 
 	normalizeRelationships: function(type, hash) {
 		var payloadKey, key, objList, idList = [];
-
 		if (this.keyForRelationship) {
 			type.eachRelationship(function(key, relationship) {
 				payloadKey = this.keyForRelationship(key, relationship.kind);
-
-				objList = hash[payloadKey] || [];
-
+				objList = hash["surveys"] || [];
 				objList.forEach(function(item) {
 					idList.push(Ember.get(item, 'id'));
 				});

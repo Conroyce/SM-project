@@ -49,13 +49,10 @@ SmS.ApplicationSerializer = DS.RESTSerializer.extend({
 
 	normalizeRelationships: function(type, hash) {
 		var payloadKey, key, objList, idList = [];
-
 		if (this.keyForRelationship) {
 			type.eachRelationship(function(key, relationship) {
 				payloadKey = this.keyForRelationship(key, relationship.kind);
-
-				objList = hash[payloadKey] || [];
-
+				objList = hash["surveys"] || [];
 				objList.forEach(function(item) {
 					idList.push(Ember.get(item, 'id'));
 				});
